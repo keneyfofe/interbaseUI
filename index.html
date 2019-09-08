@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Interbase · User Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <style>
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark  bg-dark container">
+                <a class="navbar-brand" href="#">Interbase</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li>
+                            <router-link class="nav-item active nav-link" to="/"> Home </router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-item nav-link" to="about"> About Us </router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-item nav-link" to="contact"> Contact Us </router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-item nav-link" to="customers"> Person List </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <router-view></router-view>
+            <!-- FOOTER -->
+            <footer class="container">
+                <p>&copy; 2019 Interbase, Inc. </p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Vue Pages -->
+    <script src="pages/home.vue.js"></script>
+    <script src="pages/about.vue.js"></script>
+    <script src="pages/contact.vue.js"></script>
+    <script src="pages/customers.vue.js"></script>
+    <script src="pages/accounts.vue.js"></script>
+    <script src="pages/transactions.vue.js"></script>
+
+    <!-- Vue Components -->
+    <script src="pages/components/person/addPerson.vue.js"></script>
+    <script src="pages/components/person/editPerson.vue.js"></script>
+
+    <script src="pages/components/transactions/addTransaction.vue.js"></script>
+    <script src="pages/components/transactions/editTransaction.vue.js"></script>
+
+    <script>
+        var routes = [{
+                path: '/',
+                component: Home
+            },
+            {
+                path: '/about',
+                component: About
+            },
+            {
+                path: '/contact',
+                component: Contact
+            },
+            {
+                path: '/customers',
+                component: Customer
+            },
+            {
+                name: 'accounts',
+                path: '/accounts',
+                component: Accounts
+            },
+            {
+                name: 'transactions',
+                path: '/transactions',
+                component: Transactions
+            },
+            {
+                name: 'addPerson',
+                path: '/add_person',
+                component: AddPerson
+            },
+            {
+                name: 'editPerson',
+                path: '/edit_person',
+                component: EditPerson
+            },
+            {
+                name: 'addTransaction',
+                path: '/add_transaction',
+                component: AddTransaction
+            },
+            {
+                name: 'editTransaction',
+                path: '/edit_transaction',
+                component: EditTransaction
+            }
+        ];
+        var router = new VueRouter({
+            routes: routes,
+            base: '/'
+        });
+        var app = new Vue({
+            el: '#app',
+            router: router,
+        })
+    </script>
+</body>
+
+</html>
